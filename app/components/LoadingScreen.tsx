@@ -12,20 +12,22 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
+    // Force the loading screen to remain for 3 seconds before finishing.
     const timer = setTimeout(() => {
       onFinish();
     }, 3000);
     return () => clearTimeout(timer);
   }, [onFinish]);
 
+  // Apply a subtle pulsing animation using GSAP
   useEffect(() => {
     if (titleRef.current) {
       gsap.to(titleRef.current, {
-        scale: 1.05,
-        yoyo: true,
-        repeat: -1,
-        ease: "power1.inOut",
+        scale: 1.03,
         duration: 1.5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
       });
     }
   }, []);
@@ -37,7 +39,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
   };
 
   const titleVariants = {
-    initial: { y: -100, opacity: 0, scale: 0.8 },
+    initial: { y: -20, opacity: 0, scale: 0.95 },
     animate: {
       y: 0,
       opacity: 1,
@@ -45,9 +47,9 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
       transition: { duration: 1.5, ease: "easeOut" },
     },
     exit: {
-      y: -100,
+      y: -20,
       opacity: 0,
-      scale: 0.8,
+      scale: 0.95,
       transition: { duration: 1, ease: "easeIn" },
     },
   };
