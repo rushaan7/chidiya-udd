@@ -32,6 +32,7 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
     }
   }, []);
 
+  // Remove any noticeable initial entrance offset by setting initial equals animate.
   const containerVariants = {
     initial: { opacity: 1 },
     animate: { opacity: 1 },
@@ -39,19 +40,9 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
   };
 
   const titleVariants = {
-    initial: { y: -20, opacity: 0, scale: 0.95 },
-    animate: {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1.5, ease: "easeOut" },
-    },
-    exit: {
-      y: -20,
-      opacity: 0,
-      scale: 0.95,
-      transition: { duration: 1, ease: "easeIn" },
-    },
+    initial: { y: 0, opacity: 1, scale: 1 },
+    animate: { y: 0, opacity: 1, scale: 1, transition: { duration: 0.1, ease: "linear" } },
+    exit: { y: 0, opacity: 0, scale: 1, transition: { duration: 1, ease: "easeIn" } },
   };
 
   return (
