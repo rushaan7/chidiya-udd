@@ -12,14 +12,12 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
   const titleRef = useRef<HTMLHeadingElement>(null);
 
   useEffect(() => {
-    // Force the loading screen to remain for 3 seconds before finishing.
     const timer = setTimeout(() => {
       onFinish();
     }, 3000);
     return () => clearTimeout(timer);
   }, [onFinish]);
 
-  // Apply a subtle pulsing animation using GSAP
   useEffect(() => {
     if (titleRef.current) {
       gsap.to(titleRef.current, {
@@ -32,7 +30,6 @@ export default function LoadingScreen({ onFinish }: LoadingScreenProps) {
     }
   }, []);
 
-  // Remove any noticeable initial entrance offset by setting initial equals animate.
   const containerVariants = {
     initial: { opacity: 1 },
     animate: { opacity: 1 },
