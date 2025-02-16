@@ -28,6 +28,6 @@ Bird Tap Game is a fun, interactive web-based game inspired by the classic child
 
    ```bash
    git clone https://github.com/rushaan7/chidiya-udd.git
-   cd Bird-Tap-Game
+   cd chidiya-udd
    npm install
    npm run dev
