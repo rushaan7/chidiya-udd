@@ -6,10 +6,9 @@ export default function useSound(url: string) {
 
   useEffect(() => {
     const audio = new Audio(url);
-    audio.volume = 1; // Ensure volume is set to full
+    audio.volume = 1; 
     soundRef.current = audio;
 
-    // Optionally, preload the audio
     audio.load();
 
     return () => {
@@ -20,7 +19,6 @@ export default function useSound(url: string) {
 
   const play = () => {
     if (soundRef.current) {
-      // Reset to start in case it's already playing
       soundRef.current.currentTime = 0;
       soundRef.current
         .play()

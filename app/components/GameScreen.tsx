@@ -131,7 +131,6 @@ export default function GameScreen({
     };
   }, [isGameOver, generateWord, isBirdWord, handleGameOver, score]);
 
-  // Animate the word when it changes using GSAP
   useEffect(() => {
     if (wordRef.current) {
       gsap.fromTo(

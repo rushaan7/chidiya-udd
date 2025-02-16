@@ -10,14 +10,12 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  // Determine initial theme from localStorage or fallback to system preference.
   const getInitialTheme = (): boolean => {
     if (typeof window !== "undefined") {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme) {
         return savedTheme === "dark";
       }
-      // If no saved theme, use system preference.
       return window.matchMedia("(prefers-color-scheme: dark)").matches;
     }
     return false;
